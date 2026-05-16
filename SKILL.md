@@ -198,7 +198,9 @@ Use this layout:
 ```text
 test-artifacts/
   <game-slug>-<target-or-build>-<YYYY-MM-DD>/
-    report.md
+    human-report.md
+    ai-fix-packet.md
+    index.md              # optional short file that links both reports
     evidence/
       raw/
       screenshots/
@@ -207,10 +209,12 @@ test-artifacts/
       attempts/
 ```
 
-- `report.md` is the human entry point. A project owner should be able to open this file first and understand the result without browsing raw logs.
+- `human-report.md` is the project-owner entry point. A human should be able to open this file first and understand the result without browsing raw logs or AI repair details.
+- `ai-fix-packet.md` is the agent/developer handoff. Keep it structured, factual, English-only, and focused on reproduction, evidence, suspected areas, and retest instructions.
+- `index.md` is optional. Use it only as a tiny table of contents linking `human-report.md`, `ai-fix-packet.md`, and important evidence folders.
 - Put raw JSON, console logs, network logs, traces, screenshots, videos, and exploratory failed attempts under `evidence/`, never loose beside other game folders.
 - If multiple rounds are run for the same game on the same day, keep them in the same game folder and separate raw data under `evidence/round-1`, `evidence/round-2`, or similarly clear names.
-- Keep evidence paths linked from `report.md` when they support a finding.
+- Keep evidence paths linked from both reports when they support a finding.
 - Ignore or exclude artifact folders from source-control commits unless the user explicitly asks to publish test evidence.
 
 ## Reporting
@@ -223,18 +227,18 @@ Report concise evidence, not just vibes.
 - Say what was fixed and what was retested.
 - Note remaining risks that still need real-device or production-preview testing.
 
-Always separate output for two audiences unless the user asks for a different shape.
+Always separate output for two audiences unless the user asks for a different shape. Prefer separate files: `human-report.md` for people and `ai-fix-packet.md` for agents/developers.
 
 ### Report Languages
 
 Use English as the primary public report language. Also include the project owner's preferred human language when known.
 
-- Default for this project owner: include both English and Traditional Chinese human reports in `report.md`.
+- Default for this project owner: include both English and Traditional Chinese human reports in `human-report.md`.
 - Put the English Human Report first, then `Human Report (Traditional Chinese)` with the same verdict, findings, next steps, and risks in plain language.
 - Do not translate raw logs, stack traces, URLs, file paths, commands, or AI Fix Packets. Keep those exact and in English where possible.
 - AI Fix Packet should stay English-only so agents and coding tools can consume it consistently.
 - Do not generate every possible language by default; that wastes tokens and makes the report harder to scan.
-- If the user asks for more languages, add only the requested language sections or separate files such as `report.ja.md`, `report.ko.md`, or `report.es.md`.
+- If the user asks for more languages, add only the requested language sections or separate files such as `human-report.ja.md`, `human-report.ko.md`, or `human-report.es.md`.
 - If token budget is tight, keep the secondary-language human report shorter but preserve verdict, main findings, next step, and remaining risks.
 
 ### Human Report
