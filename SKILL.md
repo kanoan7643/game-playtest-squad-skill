@@ -200,7 +200,6 @@ test-artifacts/
   <game-slug>-<target-or-build>-<YYYY-MM-DD>/
     human-report.md
     ai-fix-packet.md
-    index.md              # optional short file that links both reports
     evidence/
       raw/
       screenshots/
@@ -211,7 +210,6 @@ test-artifacts/
 
 - `human-report.md` is the project-owner entry point. A human should be able to open this file first and understand the result without browsing raw logs or AI repair details.
 - `ai-fix-packet.md` is the agent/developer handoff. Keep it structured, factual, English-only, and focused on reproduction, evidence, suspected areas, and retest instructions.
-- `index.md` is optional. Use it only as a tiny table of contents linking `human-report.md`, `ai-fix-packet.md`, and important evidence folders.
 - Put raw JSON, console logs, network logs, traces, screenshots, videos, and exploratory failed attempts under `evidence/`, never loose beside other game folders.
 - If multiple rounds are run for the same game on the same day, keep them in the same game folder and separate raw data under `evidence/round-1`, `evidence/round-2`, or similarly clear names.
 - Keep evidence paths linked from both reports when they support a finding.
