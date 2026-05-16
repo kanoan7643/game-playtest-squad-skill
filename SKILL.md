@@ -54,6 +54,17 @@ Support "drop a link and test it" workflows. If the user provides only a playabl
 - If login, payment, age gate, invite-only access, browser permissions, anti-bot checks, or missing credentials block testing, report the blocker clearly instead of pretending the game was tested.
 - When source code is unavailable, keep the AI Fix Packet focused on observable symptoms, console/network evidence, URLs, screenshots, and likely areas such as loading, audio, input, or asset delivery. Do not invent file paths or root causes.
 
+## Multilingual UI
+
+Many games use Chinese, Japanese, Korean, or mixed-language UI. Do not assume important buttons are labeled in English.
+
+- Treat non-English UI as normal, not as an edge case. The test should still try to start the game, choose options, and play the first loop.
+- Use Unicode-safe automation. Avoid shell or script patterns that corrupt non-ASCII labels into `??`. If the shell is not reliably UTF-8, use DOM structure, element positions, accessible roles, screenshots, or Unicode code-point matching instead of inline non-ASCII regex literals.
+- Prefer visible-state and flow-aware selectors over English-only text matching. For example, identify the main menu's first large action button, save-slot cards, character cards, map cards, confirm buttons, and back buttons by visibility, layout, and screen state.
+- When using text, collect actual visible labels from the page and compare them safely. Include the observed labels in the raw evidence when they guide clicks.
+- If language selection exists, record the default language and whether switching language affects the flow. Do not switch language unless it is part of the profile or needed to proceed.
+- If the tester fails to proceed because it cannot understand or select non-English UI, classify that as a test automation limitation first, then improve the selector strategy before reporting a game bug.
+
 ## Game Type Discovery
 
 Before choosing scenarios, classify the game by what the player actually does. If the repo or product text is unclear, infer from the playable build and label the inference.
