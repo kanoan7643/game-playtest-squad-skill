@@ -1,0 +1,4 @@
+interface:
+  display_name: "Game Playtest Squad"
+  short_description: "Run first-run game playtest squads."
+  default_prompt: "Use $game-playtest-squad to run the appropriate playtest tier and summarize issues, evidence, fixes, and retest results."
