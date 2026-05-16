@@ -2,6 +2,18 @@
 
 Standalone Codex skill for running repeatable first-run game playtests with multiple player profiles.
 
+This project is built for AI-assisted game development. As more games are created with AI, real player attention becomes harder to earn, so this skill helps AI run early playtest passes first: find obvious blockers, broken assets, confusing flows, input issues, performance problems, and reproducible bugs before asking human players to spend time on a build.
+
+The goal is not to replace human playtesting. The goal is to help developers reach a cleaner, more playable version before human feedback is needed.
+
+中文補充：這個專案的目標不是取代真人試玩，而是在玩家願意花時間以前，先用 AI 做第一輪測試，把明顯卡關、破圖、操作、效能、流程問題整理掉，並產生可以交給 AI 繼續修復的資料。
+
+## Language Policy
+
+This project is English-first for future open-source use. Core documentation, commands, report formats, scripts, and contribution guidance should be understandable in English.
+
+Traditional Chinese can be used as secondary notes for the project owner and Chinese-speaking collaborators, but it should not be the only source of important instructions.
+
 The repository root is the skill folder. Codex can read it directly when it is linked or copied into the machine's global skills directory:
 
 ```text

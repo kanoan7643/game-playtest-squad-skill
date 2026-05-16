@@ -5,5 +5,6 @@ Thumbs.db
 *.bak
 playtest-output/
 screenshots/
+test-artifacts/
 traces/
 node_modules/
