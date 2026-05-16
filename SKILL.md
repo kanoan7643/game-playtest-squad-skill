@@ -186,8 +186,32 @@ After collecting data:
 - Close every Playwright page, context, browser, emulator, or external browser automation session.
 - Stop temporary local servers.
 - Close finished subagents that are no longer needed.
-- Keep screenshots/logs that are referenced as evidence; delete or ignore temporary artifacts that are not referenced.
+- Keep screenshots/logs that are referenced as evidence, but organize them under the artifact layout below instead of leaving loose files in the output root.
 - Confirm the next playtest round starts from fresh profiles, not old cache or saved state.
+
+## Artifact Layout
+
+Keep playtest outputs easy for a human to open. Use one folder per tested game/build, then put the readable report at the second level and raw evidence at the third level.
+
+Use this layout:
+
+```text
+test-artifacts/
+  <game-slug>-<target-or-build>-<YYYY-MM-DD>/
+    report.md
+    evidence/
+      raw/
+      screenshots/
+      traces/
+      videos/
+      attempts/
+```
+
+- `report.md` is the human entry point. A project owner should be able to open this file first and understand the result without browsing raw logs.
+- Put raw JSON, console logs, network logs, traces, screenshots, videos, and exploratory failed attempts under `evidence/`, never loose beside other game folders.
+- If multiple rounds are run for the same game on the same day, keep them in the same game folder and separate raw data under `evidence/round-1`, `evidence/round-2`, or similarly clear names.
+- Keep evidence paths linked from `report.md` when they support a finding.
+- Ignore or exclude artifact folders from source-control commits unless the user explicitly asks to publish test evidence.
 
 ## Reporting
 
