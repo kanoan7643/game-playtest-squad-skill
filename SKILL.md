@@ -225,6 +225,18 @@ Report concise evidence, not just vibes.
 
 Always separate output for two audiences unless the user asks for a different shape.
 
+### Report Languages
+
+Use English as the primary public report language. Also include the project owner's preferred human language when known.
+
+- Default for this project owner: include both English and Traditional Chinese human reports in `report.md`.
+- Put the English Human Report first, then `Human Report (Traditional Chinese)` with the same verdict, findings, next steps, and risks in plain language.
+- Do not translate raw logs, stack traces, URLs, file paths, commands, or AI Fix Packets. Keep those exact and in English where possible.
+- AI Fix Packet should stay English-only so agents and coding tools can consume it consistently.
+- Do not generate every possible language by default; that wastes tokens and makes the report harder to scan.
+- If the user asks for more languages, add only the requested language sections or separate files such as `report.ja.md`, `report.ko.md`, or `report.es.md`.
+- If token budget is tight, keep the secondary-language human report shorter but preserve verdict, main findings, next step, and remaining risks.
+
 ### Human Report
 
 Write this for a non-specialist project owner, not for a professional game designer. Many AI-era game creators are using vibe coding and may not know design, QA, engine, or performance terminology. Use plain language first, explain why each issue matters to a player, and translate technical evidence into practical impact.
