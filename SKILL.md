@@ -118,6 +118,28 @@ Every tester must behave like a first-time player.
 - Do not reuse played save slots unless the test is specifically about persistence.
 - Record whether the game shows tutorials, onboarding, loading screens, save creation, character selection, map/level selection, and first input prompts correctly.
 
+## Per-Game Play Policy
+
+Keep this skill generic. Do not hard-code one game's tactics, character builds, hotkeys, boss strategy, puzzle solution, racing line, economy recipe, or deck plan into this skill.
+
+When a game needs smarter play than blind input, create or load a per-target play policy for that run. The policy can come from the game's README, in-game tutorial, project skill, design notes, user instructions, or observations from a short discovery pass. Store it with the test plan, raw evidence, or the target project's own files, not in this reusable skill.
+
+A play policy should describe intent in genre-neutral terms:
+
+- Core controls: how to move, aim, confirm, cancel, dash, block, jump, use items, trigger special abilities, or perform the game's equivalent actions.
+- Decision triggers: when to use limited resources, defensive moves, special abilities, boosts, hints, undo, healing, revives, cards, skills, or tactical pauses.
+- Upgrade or choice preferences: how to prioritize rewards, stats, routes, cards, dialogue choices, equipment, buildings, vehicles, or puzzle options.
+- Objective focus: whether the profile is trying to survive, clear, speedrun, explore, maximize score, test failure recovery, or stress a risky system.
+- Evidence limits: what the AI did not understand well enough and whether a failed run reflects game balance, unclear onboarding, or tester skill limits.
+
+Use at least two player-policy levels when balance or difficulty matters:
+
+- Fresh beginner: uses only obvious UI, tutorial hints, and basic controls.
+- Informed player: follows the game's stated rules and uses important mechanics at sensible moments.
+- Clear or objective attempt: uses a concise strategy to pursue victory, completion, score, or the requested goal.
+
+If the informed or clear-attempt profile succeeds but the fresh beginner fails, report the issue as onboarding, readability, tutorial, or first-run guidance risk before calling the game too hard. If all policy levels fail, then report it as stronger evidence of balance, rules, input, or progression problems.
+
 ## Player Profiles
 
 Adapt names to the game being tested, but keep the roles distinct.
