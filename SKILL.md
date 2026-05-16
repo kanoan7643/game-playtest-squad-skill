@@ -174,6 +174,8 @@ For gameplay issues, record:
 - Whether the first combat loop is understandable.
 - Whether rewards/level-up/shop/upgrade flows can be completed.
 - Whether special abilities show their visual/audio feedback promptly.
+- Whether the tester actually used the game's important mechanics. Record action counts and trigger context when possible, such as dash/block/jump timing, ultimate/special use, boost use, item use, card play, undo/hint use, healing, build actions, lane changes, rhythm misses, or puzzle moves.
+- Whether choices followed the active play policy. Record selected upgrades, cards, routes, dialogue options, equipment, vehicles, buildings, or puzzle options when those choices affect the result.
 - Whether boss or late-game checks are real-time or accelerated.
 - Frame pacing when possible: FPS, p95 frame time, long frames, and viewport/device profile.
 - Whether genre-specific result states work: level clear, solved puzzle, failed puzzle, match win/loss, quest update, race finish, song results, crafted item, saved game, or reconnect outcome.
@@ -197,9 +199,10 @@ Use this loop for each playtest round:
 1. Run the selected tier with fresh profiles.
 2. Summarize findings by severity and recurrence.
 3. Separate product bugs from test artifacts such as overloaded local machine, headless-browser audio limits, or intentionally harsh throttling.
-4. Fix high-severity and repeated issues first.
-5. Rerun the smallest tier that covers the fixes.
-6. Stop when basic blockers are gone: no blank first screen, no broken required art, no blocking load, no crash, no stuck main flow, no missing required special/boss/result visuals.
+4. If a profile fails because it did not use important mechanics well, run an informed-player or clear-attempt policy before reporting the game as too hard.
+5. Fix high-severity and repeated issues first.
+6. Rerun the smallest tier that covers the fixes.
+7. Stop when basic blockers are gone: no blank first screen, no broken required art, no blocking load, no crash, no stuck main flow, no missing required special/boss/result visuals.
 
 Leave subjective balance, taste, or long-session feel for human play unless the user asks agents to continue tuning.
 
@@ -247,6 +250,7 @@ Report concise evidence, not just vibes.
 - For AI/developer readers, start with reproducible setup: tier, profiles, device/viewports, network settings, target URL/app, and whether tests were real-time or accelerated.
 - List blocking issues first with reproduction steps and likely cause.
 - Include key timing numbers and failed/missing asset URLs when relevant.
+- Include a tester-skill note when judging difficulty, balance, or fairness. State whether the run used fresh-beginner, informed-player, or clear-attempt policy, and whether important mechanics were actually used.
 - Say what was fixed and what was retested.
 - Note remaining risks that still need real-device or production-preview testing.
 
@@ -275,6 +279,7 @@ Write this for a non-specialist project owner, not for a professional game desig
 - Suggested next step: give one or two plain actions, such as "ready for a friend to try for 10 minutes", "fix loading before sharing", or "run a full 10-minute clear before posting publicly."
 - Evidence: keep this short in the human report. Link screenshots/video/log/report paths and translate technical numbers into plain impact, such as "low FPS means the game looked choppy."
 - What was tested: include game type, core loop, tier, profiles, devices, network mode, and target URL/app, but keep it after the pros/cons unless the user asks for a QA-style report.
+- AI tester limitation: when relevant, say in plain language whether the AI played like a true beginner, an informed player, or a clear-focused player. Do not let an unskilled AI loss automatically become a "game is too hard" verdict.
 - Fix/retest status: what was fixed, what was rerun, and whether the issue reproduced again.
 - Remaining risk: real-device, production-hosting, multiplayer, long-session, save migration, or subjective feel that still needs human testing.
 
@@ -297,6 +302,8 @@ Profile and viewport:
 Target URL/app/build:
 Network mode:
 Real-time or accelerated:
+Player policy:
+Core mechanics used:
 Reproduction steps:
 Expected behavior:
 Actual behavior:
