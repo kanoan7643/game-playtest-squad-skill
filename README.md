@@ -42,7 +42,15 @@ Copy mode is less convenient because future edits require reinstalling.
 
 ## Install On Another Computer
 
-Clone this repository, then run the installer from that clone:
+Current published source:
+
+```powershell
+git clone --single-branch --branch standalone/game-playtest-squad-skill https://github.com/kanoan7643/codex-skills.git game-playtest-squad-skill
+cd game-playtest-squad-skill
+.\scripts\install.ps1
+```
+
+After a dedicated standalone GitHub repository is created, the clone command can become:
 
 ```powershell
 git clone https://github.com/kanoan7643/game-playtest-squad-skill.git
