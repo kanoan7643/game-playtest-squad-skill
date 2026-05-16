@@ -98,6 +98,8 @@ Choose the smallest tier that fits the request.
 
 Avoid more than 8 browser-running agents unless the user accepts that local CPU, RAM, GPU, and network contention can distort timing.
 
+For fixed-duration games such as a 10-minute survivor run, distinguish player runtime from wall-clock test time. Three profiles running truly in parallel still take about one 10-minute run plus setup, screenshot review, report writing, and any reruns; do not estimate by simply adding 10 minutes per profile. If performance, audio, or GPU contention matters, run fewer profiles at once and state that the wall-clock time increased because accuracy mattered more than parallel speed.
+
 Use these default device targets unless the game or user request implies better values:
 
 - Phone portrait: `390x844` or a named modern phone profile with touch enabled.
@@ -219,7 +221,8 @@ test-artifacts/
 
 Report concise evidence, not just vibes.
 
-- Start with setup: tier, profiles, device/viewports, network settings, target URL/app, and whether tests were real-time or accelerated.
+- For human readers, lead with the player-facing judgment: what works well, what needs attention, and what to do next. Keep setup details short and move mechanical details after the practical takeaways.
+- For AI/developer readers, start with reproducible setup: tier, profiles, device/viewports, network settings, target URL/app, and whether tests were real-time or accelerated.
 - List blocking issues first with reproduction steps and likely cause.
 - Include key timing numbers and failed/missing asset URLs when relevant.
 - Say what was fixed and what was retested.
@@ -245,14 +248,17 @@ Write this for a non-specialist project owner, not for a professional game desig
 
 - Verdict: use plain labels such as "Ready for a small human test", "Not ready yet", "Playable but risky", or "Blocked", then include pass/fail/partial/blocked if useful.
 - One-sentence summary: say what a normal player would experience, for example "The game opens and can be played, but the first fight slows down badly on desktop."
-- What was tested: describe the game type, core loop, tier, profiles, devices, network mode, and target URL/app without assuming the reader knows QA terms.
-- Main findings: blocking issues first, then repeated non-blocking issues, then polish concerns. For each issue, state the player-visible symptom before technical detail.
-- Evidence: screenshots/video/log/report paths, key timing numbers, FPS/p95, failed requests, missing assets, or concrete state snapshots. Explain technical numbers in plain terms, such as "low FPS means the game looked choppy."
+- What works well: make this a first-class section near the top. Mention strengths a player or creator cares about, such as fast start, clear goal, understandable controls, readable UI, appealing art/audio, satisfying feedback, mobile fit, stable first loop, or a distinctive idea.
+- Needs attention: make this the main negative section. Include blockers, repeated non-blocking problems, confusing moments, weak feedback, readability issues, balance concerns, missing polish, and risks that could disappoint players. State the player-visible symptom before technical detail.
+- Suggested next step: give one or two plain actions, such as "ready for a friend to try for 10 minutes", "fix loading before sharing", or "run a full 10-minute clear before posting publicly."
+- Evidence: keep this short in the human report. Link screenshots/video/log/report paths and translate technical numbers into plain impact, such as "low FPS means the game looked choppy."
+- What was tested: include game type, core loop, tier, profiles, devices, network mode, and target URL/app, but keep it after the pros/cons unless the user asks for a QA-style report.
 - Fix/retest status: what was fixed, what was rerun, and whether the issue reproduced again.
-- Next step: state the next practical action in plain language, such as "fix loading before asking players", "test on a real phone", or "ready for a friend to try for 10 minutes."
 - Remaining risk: real-device, production-hosting, multiplayer, long-session, save migration, or subjective feel that still needs human testing.
 
-Avoid unexplained terms like p95, repro, regression, softlock, desync, cache, render, tick, or asset pipeline in the human report. If a term is useful, define it briefly in the same sentence.
+Use this default human report order unless the user asks otherwise: Verdict, Plain Summary, What Works Well, Needs Attention, Suggested Next Step, Short Evidence, What Was Tested, Remaining Risk.
+
+Avoid unexplained terms like p95, repro, regression, softlock, desync, cache, render, tick, or asset pipeline in the human report. If a term is useful, define it briefly in the same sentence. Do not let tables of devices, raw request counts, or mechanical QA wording dominate the top of the human report.
 
 ### AI Fix Packet
 
